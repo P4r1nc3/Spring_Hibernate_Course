@@ -20,6 +20,4 @@ public class HelloSpringApp {
         //Close the context
         context.close();
     }
-
-
 }
