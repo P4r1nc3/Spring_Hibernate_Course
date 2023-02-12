@@ -18,8 +18,17 @@ public class TennisCoach implements Coach {
     }
     */
 
+    // setter injection
+    /*
     @Autowired
     public void setFortuneService(FortuneService theFortuneService) {
+        this.fortuneService = theFortuneService;
+    }
+    */
+
+    // method injection
+    @Autowired
+    public void doSomeCrazyStuff(FortuneService theFortuneService) {
         this.fortuneService = theFortuneService;
     }
 
