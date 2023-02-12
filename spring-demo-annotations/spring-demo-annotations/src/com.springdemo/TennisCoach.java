@@ -5,6 +5,8 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class TennisCoach implements Coach {
+
+    @Autowired
     FortuneService fortuneService;
 
     // default constructor
@@ -27,10 +29,12 @@ public class TennisCoach implements Coach {
     */
 
     // method injection
+    /*
     @Autowired
     public void doSomeCrazyStuff(FortuneService theFortuneService) {
         this.fortuneService = theFortuneService;
     }
+    */
 
     @Override
     public String getDailyWorkout() {
