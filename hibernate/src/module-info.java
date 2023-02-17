@@ -1,0 +1,9 @@
+/**
+ * 
+ */
+/**
+ * @author parince
+ *
+ */
+module hibernate {
+}
