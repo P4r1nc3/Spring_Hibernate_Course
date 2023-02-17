@@ -7,6 +7,10 @@
 		<br>
 		
 		<a href="hello/showForm">Hello World Form</a>
+		
+		<br>
+		
+		<a href="student/showForm">Hello World Form</a>
 	</body>
 
 </html>
