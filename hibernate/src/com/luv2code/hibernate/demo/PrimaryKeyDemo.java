@@ -24,7 +24,7 @@ public class PrimaryKeyDemo {
 			System.out.println("Creating a new student objects...");
 			
 			// create 3 students object 
-			Student tempStudent1 = new Student("John", "Doe", "paulwall@example.com");
+			Student tempStudent1 = new Student("John", "Doe", "johndoe@example.com");
 			Student tempStudent2 = new Student("Paul", "Walker", "paulwalker@example.com");
 			Student tempStudent3 = new Student("John", "Deer", "johndeer@example.com");
 			
@@ -45,9 +45,5 @@ public class PrimaryKeyDemo {
 		finally {
 			factory.close();
 		}
-		
-		
-
 	}
-
 }
