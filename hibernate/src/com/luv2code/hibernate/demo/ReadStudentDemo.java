@@ -1,15 +1,16 @@
 package com.luv2code.hibernate.demo;
 
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 import com.luv2code.hibernate.demo.entity.Student;
 
-public class PrimaryKeyDemo {
+public class ReadStudentDemo {
 
 	public static void main(String[] args) {
-
+		
 		// create session factory
 		SessionFactory factory = new Configuration()
 									.configure("hibernate.cfg.xml")
@@ -21,21 +22,34 @@ public class PrimaryKeyDemo {
 		
 		try {
 			// use the session object
-			System.out.println("Creating a new student objects...");
+			System.out.println("Creating a new student object...");
 			
-			// create 3 students object 
-			Student tempStudent1 = new Student("John", "Doe", "johndoe@example.com");
-			Student tempStudent2 = new Student("Paul", "Walker", "paulwalker@example.com");
-			Student tempStudent3 = new Student("John", "Deer", "johndeer@example.com");
+			// create student object 
+			Student tempStudent = new Student("Daffy", "Duck", "daffyduck@example.com");
 			
 			// start a transaction
 			session.beginTransaction();
 			
-			// save a students objects
+			// save a student object 
 			System.out.println("Saving a new student...");
-			session.save(tempStudent1);
-			session.save(tempStudent2);
-			session.save(tempStudent3);
+			session.save(tempStudent);
+			
+			// commit transaction
+			session.getTransaction().commit();
+			
+			// student's id
+			System.out.println("Saved student. Generated id: " + tempStudent.getId());
+			
+			// new session and start transaction
+			session = factory.getCurrentSession();
+			session.beginTransaction();
+			
+			// retrieve student based on the id
+			System.out.println("\nGetting student with id: " + tempStudent.getId());
+			
+			Student myStudent = session.get(Student.class , tempStudent.getId());
+			
+			System.out.println("Get complete: " + myStudent);
 			
 			// commit transaction
 			session.getTransaction().commit();
