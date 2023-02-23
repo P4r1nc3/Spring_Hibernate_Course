@@ -67,38 +67,14 @@ W powyższym przykładzie pole "id" zostało oznaczone adnotacją @Id i będzie 
 
 Podsumowując, adnotacja @Entity jest niezbędna do oznaczenia klas Java, które mają być mapowane na encje w bazie danych. Dodatkowo wymusza ona deklarację przynajmniej jednego pola jako klucza głównego dla encji.
 
-Adnotacja @Column może przyjmować wiele parametrów, które umożliwiają dokładne określenie właściwości kolumny w tabeli bazy danych, do której jest mapowany obiekt. Oto kilka przykładów parametrów, jakie można przekazać do adnotacji @Column:
-Oczywiście, oto lista popularnych atrybutów adnotacji @Column i ich krótkie przykłady:
-
-1. name - określa nazwę kolumny w tabeli Przykład: @Column(name = "last_name")
-2. nullable - określa, czy wartość kolumny może być pusta (true) lub nie (false)
-Przykład: @Column(nullable = false)
-3. unique - określa, czy wartości w kolumnie muszą być unikalne (true) czy nie (false)
-Przykład: @Column(unique = true)
-4. length - określa maksymalną długość kolumny
-Przykład: @Column(length = 50)
-5. precision - określa dokładność (liczbę cyfr) dla wartości numerycznych
-Przykład: @Column(precision = 10)
-6. scale - określa ilość cyfr po przecinku dla wartości numerycznych
-Przykład: @Column(scale = 2)
-7. insertable - określa, czy wartość kolumny może być ustawiona podczas wstawiania rekordu (true) czy nie (false)
-Przykład: @Column(insertable = false)
-8. updatable - określa, czy wartość kolumny może być aktualizowana (true) czy nie (false)
-Przykład: @Column(updatable = false)
-9. columnDefinition - określa wyrażenie SQL, które definiuje typ danych i właściwości kolumny
-Przykład: @Column(columnDefinition = "VARCHAR(255) DEFAULT 'N/ A'")
-10. table - określa nazwę tabeli, do której należy kolumna (gdy jest ona zdefiniowana na poziomie klasy)
-Przykład: @Column(table = "employees")
-
-Te parametry umożliwiają dokładne dostosowanie mapowania obiektów do kolumn w tabelach bazy danych, co pozwala na lepszą kontrolę nad danymi zapisywanymi i odczytywanymi z bazy danych.
-
 ## 2. @Table
 
 Adnotacja @Table jest używana w Hibernate do określenia nazwy tabeli, do której ma zostać zmapowana dana encja. Można jej użyć, aby nadpisać domyślną nazwę tabeli, która jest generowana na podstawie nazwy klasy.
 
 ```
 @Entity
-@Table(name = "my_table") public class User {
+@Table(name = "my_table") 
+public class User {
   // pola klasy 
 }
 ```
@@ -107,7 +83,8 @@ W powyższym przykładzie klasa User została oznaczona adnotacją @Entity, ale 
 
 ```
 @Entity
-@Table(name = "users", schema = "public") public class User {
+@Table(name = "users", schema = "public") 
+public class User {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY) 
   @Column(name = "user_id")
@@ -220,6 +197,7 @@ W powyższym przykładzie użyto strategii generowania klucza głównego SEQUENC
 Podsumowując, adnotacja @GeneratedValue służy do określenia sposobu generowania wartości klucza głównego dla encji. Dostępne strategie generowania klucza głównego to m.in. IDENTITY, SEQUENCE, TABLE i AUTO.
 
 ## 5. @Column
+
 Adnotacja @Column jest używana w Hibernate do mapowania pola encji na kolumnę w tabeli bazy danych. Adnotacja ta może być używana z różnymi parametrami, które pozwalają na dostosowanie sposobu mapowania kolumny. Przykładowo, możemy użyć adnotacji @Column bez parametrów, aby wskazać, że pole encji powinno być mapowane na kolumnę o tej samej nazwie w tabeli bazy danych:
 
 ```
@@ -268,7 +246,34 @@ public class Product {
 W powyższym przykładzie pole "name" zostało oznaczone adnotacją @Column z parametrem "name", który wskazuje, że to pole powinno być mapowane na kolumnę "product_name" w tabeli bazy danych.
 Innymi przydatnymi parametrami adnotacji @Column są "nullable" i "length", które pozwalają na wskazanie, czy kolumna może przyjmować wartości null oraz maksymalnej długości danych, które mogą być przechowywane w kolumnie.
 
+
 Podsumowując, adnotacja @Column jest używana w Hibernate do mapowania pola encji na kolumnę w tabeli bazy danych. Adnotacja ta może być używana z różnymi parametrami, które pozwalają na dostosowanie sposobu mapowania kolumny, takich jak nazwa, czy nullable.
+
+
+Adnotacja @Column może przyjmować wiele parametrów, które umożliwiają dokładne określenie właściwości kolumny w tabeli bazy danych, do której jest mapowany obiekt. Oto kilka przykładów parametrów, jakie można przekazać do adnotacji @Column:
+Oczywiście, oto lista popularnych atrybutów adnotacji @Column i ich krótkie przykłady:
+
+1. name - określa nazwę kolumny w tabeli Przykład: @Column(name = "last_name")
+2. nullable - określa, czy wartość kolumny może być pusta (true) lub nie (false)
+Przykład: @Column(nullable = false)
+3. unique - określa, czy wartości w kolumnie muszą być unikalne (true) czy nie (false)
+Przykład: @Column(unique = true)
+4. length - określa maksymalną długość kolumny
+Przykład: @Column(length = 50)
+5. precision - określa dokładność (liczbę cyfr) dla wartości numerycznych
+Przykład: @Column(precision = 10)
+6. scale - określa ilość cyfr po przecinku dla wartości numerycznych
+Przykład: @Column(scale = 2)
+7. insertable - określa, czy wartość kolumny może być ustawiona podczas wstawiania rekordu (true) czy nie (false)
+Przykład: @Column(insertable = false)
+8. updatable - określa, czy wartość kolumny może być aktualizowana (true) czy nie (false)
+Przykład: @Column(updatable = false)
+9. columnDefinition - określa wyrażenie SQL, które definiuje typ danych i właściwości kolumny
+Przykład: @Column(columnDefinition = "VARCHAR(255) DEFAULT 'N/ A'")
+10. table - określa nazwę tabeli, do której należy kolumna (gdy jest ona zdefiniowana na poziomie klasy)
+Przykład: @Column(table = "employees")
+
+Te parametry umożliwiają dokładne dostosowanie mapowania obiektów do kolumn w tabelach bazy danych, co pozwala na lepszą kontrolę nad danymi zapisywanymi i odczytywanymi z bazy danych.
  
 ## 6. @ManyToOne
 
