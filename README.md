@@ -106,6 +106,16 @@ public class User {
 W powyższym przykładzie dodatkowo użyto adnotacji @Column, aby określić nazwy kolumn w tabeli dla poszczególnych pól klasy User. Adnotacja @Column pozwala również na określenie innych opcji, takich jak typ kolumny, czy jej ograniczenia.
 Podsumowując, adnotacja @Table umożliwia nadpisanie domyślnej nazwy tabeli i określenie innych atrybutów dla encji, takich jak nazwa schematu i nazwy kolumn.
 
+Oto kilka przykładów parametrów, jakie można przekazać do adnotacji @Table:
+1. name - określa nazwę tabeli w bazie danych. 
+Przykład: @Table(name = "users")
+2. catalog - określa nazwę katalogu, do którego należy tabela. 
+Przykład: @Table(catalog = "my_database")
+3. schema - określa nazwę schematu, do którego należy tabela. 
+Przykład: @Table(schema = "public")
+4. uniqueConstraints - umożliwia określenie unikalnych ograniczeń tabeli. 
+Przykład: @Table(uniqueConstraints = @UniqueConstraint(columnNames = {"username", "email"}))
+
 ## 3. @Id
 
 Adnotacja @Id jest używana w Hibernate do oznaczania pola klasy, które ma służyć jako klucz główny (primary key) dla encji. Klucz główny to unikalny identyfikator rekordu w tabeli, który pozwala na jego jednoznaczną identyfikację i odwołanie się do niego.
@@ -251,7 +261,6 @@ Podsumowując, adnotacja @Column jest używana w Hibernate do mapowania pola enc
 
 
 Adnotacja @Column może przyjmować wiele parametrów, które umożliwiają dokładne określenie właściwości kolumny w tabeli bazy danych, do której jest mapowany obiekt. Oto kilka przykładów parametrów, jakie można przekazać do adnotacji @Column:
-Oczywiście, oto lista popularnych atrybutów adnotacji @Column i ich krótkie przykłady:
 
 1. name - określa nazwę kolumny w tabeli Przykład: @Column(name = "last_name")
 2. nullable - określa, czy wartość kolumny może być pusta (true) lub nie (false)
