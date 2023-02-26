@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="custmer")
+@Table(name="customer")
 public class Customer {
 
 	@Id
@@ -64,5 +64,9 @@ public class Customer {
 	@Override
 	public String toString() {
 		return "Customer [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + "]";
-	}
+	}	
 }
+
+
+
+
