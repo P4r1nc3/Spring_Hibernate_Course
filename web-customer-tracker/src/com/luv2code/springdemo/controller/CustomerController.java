@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.luv2code.springdemo.entity.Customer;
 import com.luv2code.springdemo.service.CustomerService;
+import com.luv2code.springdemo.util.SortUtils;
 
 @Controller
 @RequestMapping("/customer")
@@ -23,11 +24,21 @@ public class CustomerController {
 	private CustomerService customerService;
 	
 	@GetMapping("/list")
-	public String listCustomers(Model theModel) {
+	public String listCustomers(Model theModel, @RequestParam(required=false) String sort) {
 		
 		// get customers from the service
-		List<Customer> theCustomers = customerService.getCustomers();
-				
+		List<Customer> theCustomers = null;
+		
+		// check for sort field
+		if (sort != null) {
+			int theSortField = Integer.parseInt(sort);
+			theCustomers = customerService.getCustomers(theSortField);			
+		}
+		else {
+			// no sort field provided ... default to sorting by last name
+			theCustomers = customerService.getCustomers(SortUtils.LAST_NAME);
+		}
+		
 		// add the customers to the model
 		theModel.addAttribute("customers", theCustomers);
 		
